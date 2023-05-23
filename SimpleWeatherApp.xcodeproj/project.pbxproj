@@ -22,6 +22,8 @@
 		11F321E42A1CD5E500EF5652 /* CityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F321E32A1CD5E500EF5652 /* CityViewController.swift */; };
 		11F321E72A1CE21500EF5652 /* BigWeatherViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F321E52A1CE21500EF5652 /* BigWeatherViewCell.swift */; };
 		11F321E82A1CE21500EF5652 /* BigWeatherViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11F321E62A1CE21500EF5652 /* BigWeatherViewCell.xib */; };
+		11F321EB2A1CEE5E00EF5652 /* CityNameViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F321E92A1CEE5E00EF5652 /* CityNameViewCell.swift */; };
+		11F321EC2A1CEE5E00EF5652 /* CityNameViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11F321EA2A1CEE5E00EF5652 /* CityNameViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		11F321E32A1CD5E500EF5652 /* CityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewController.swift; sourceTree = "<group>"; };
 		11F321E52A1CE21500EF5652 /* BigWeatherViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigWeatherViewCell.swift; sourceTree = "<group>"; };
 		11F321E62A1CE21500EF5652 /* BigWeatherViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BigWeatherViewCell.xib; sourceTree = "<group>"; };
+		11F321E92A1CEE5E00EF5652 /* CityNameViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityNameViewCell.swift; sourceTree = "<group>"; };
+		11F321EA2A1CEE5E00EF5652 /* CityNameViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityNameViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +153,8 @@
 				11F321DA2A1CD2E200EF5652 /* WeatherViewCell.xib */,
 				11F321E52A1CE21500EF5652 /* BigWeatherViewCell.swift */,
 				11F321E62A1CE21500EF5652 /* BigWeatherViewCell.xib */,
+				11F321E92A1CEE5E00EF5652 /* CityNameViewCell.swift */,
+				11F321EA2A1CEE5E00EF5652 /* CityNameViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -277,6 +283,7 @@
 				11F321AF2A1CCDA600EF5652 /* Assets.xcassets in Resources */,
 				11F321AA2A1CCDA500EF5652 /* Main.storyboard in Resources */,
 				11F321DC2A1CD2E200EF5652 /* WeatherViewCell.xib in Resources */,
+				11F321EC2A1CEE5E00EF5652 /* CityNameViewCell.xib in Resources */,
 				11F321E82A1CE21500EF5652 /* BigWeatherViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,6 +315,7 @@
 				11F321E72A1CE21500EF5652 /* BigWeatherViewCell.swift in Sources */,
 				11F321A52A1CCDA500EF5652 /* SceneDelegate.swift in Sources */,
 				11F321DB2A1CD2E200EF5652 /* WeatherViewCell.swift in Sources */,
+				11F321EB2A1CEE5E00EF5652 /* CityNameViewCell.swift in Sources */,
 				11F321E42A1CD5E500EF5652 /* CityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

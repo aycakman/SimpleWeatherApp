@@ -109,7 +109,7 @@
                 <outlet property="label" destination="QEa-Yj-Y4A" id="HL8-HY-VPQ"/>
                 <outlet property="valueOneLabel" destination="TAi-Sf-Qtg" id="50x-cc-eNR"/>
                 <outlet property="valueTwoLabel" destination="tgo-GA-8ma" id="YkB-Vc-ohP"/>
-                <outlet property="viewCell" destination="xbC-b3-zyi" id="tG3-a2-jga"/>
+                <outlet property="viewArea" destination="xbC-b3-zyi" id="Ghi-IW-ZYB"/>
             </connections>
             <point key="canvasLocation" x="70.992366412213741" y="5.6338028169014089"/>
         </tableViewCell>

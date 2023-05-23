@@ -1,5 +1,5 @@
 //
-//  BigWeatherViewCell.swift
+//  CityNameViewCell.swift
 //  SimpleWeatherApp
 //
 //  Created by Ayca Akman on 23.05.2023.
@@ -7,16 +7,15 @@
 
 import UIKit
 
-class BigWeatherViewCell: UITableViewCell {
+class CityNameViewCell: UITableViewCell {
 
     @IBOutlet weak var viewArea: UIView!
-    @IBOutlet weak var valueTwoLabel: UILabel!
-    @IBOutlet weak var valueOneLabel: UILabel!
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var cityNameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        viewArea.layer.cornerRadius = viewArea.frame.size.height / 5
+        viewArea.layer.cornerRadius = viewArea.frame.size.height / 7
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
