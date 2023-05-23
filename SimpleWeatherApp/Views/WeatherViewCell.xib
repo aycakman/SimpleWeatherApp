@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeatherViewCell" rowHeight="124" id="vZd-oe-ZXg" customClass="WeatherViewCell" customModule="SimpleWeatherApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="487" height="124"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vZd-oe-ZXg" id="xea-ac-uKH">
+                <rect key="frame" x="0.0" y="0.0" width="487" height="124"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KFB-zQ-XlT">
+                        <rect key="frame" x="10" y="10" width="467" height="104"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k4l-QL-LUV">
+                                <rect key="frame" x="0.0" y="0.0" width="467" height="104"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="D0l-rm-wxu">
+                                        <rect key="frame" x="10" y="10" width="447" height="84"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tpQ-5a-eff">
+                                                <rect key="frame" x="0.0" y="0.0" width="234" height="84"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QoV-vg-Qyd">
+                                                        <rect key="frame" x="10" y="10" width="214" height="64"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" name="WeatherCellColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="QoV-vg-Qyd" secondAttribute="bottom" constant="10" id="9gN-cK-GaY"/>
+                                                    <constraint firstItem="QoV-vg-Qyd" firstAttribute="leading" secondItem="tpQ-5a-eff" secondAttribute="leading" constant="10" id="gcN-3I-Y6b"/>
+                                                    <constraint firstAttribute="trailing" secondItem="QoV-vg-Qyd" secondAttribute="trailing" constant="10" id="lt8-N0-lta"/>
+                                                    <constraint firstItem="QoV-vg-Qyd" firstAttribute="top" secondItem="tpQ-5a-eff" secondAttribute="top" constant="10" id="q7N-AG-qtq"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hvH-rc-yxa">
+                                                <rect key="frame" x="254" y="0.0" width="193" height="84"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQk-Rx-cpN">
+                                                        <rect key="frame" x="10" y="10" width="173" height="64"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" name="WeatherCellColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="TQk-Rx-cpN" firstAttribute="leading" secondItem="hvH-rc-yxa" secondAttribute="leading" constant="10" id="Ffn-el-9gS"/>
+                                                    <constraint firstItem="TQk-Rx-cpN" firstAttribute="top" secondItem="hvH-rc-yxa" secondAttribute="top" constant="10" id="lp8-TW-yby"/>
+                                                    <constraint firstAttribute="trailing" secondItem="TQk-Rx-cpN" secondAttribute="trailing" constant="10" id="sgy-YP-sBj"/>
+                                                    <constraint firstAttribute="bottom" secondItem="TQk-Rx-cpN" secondAttribute="bottom" constant="10" id="w5T-cl-92J"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="hvH-rc-yxa" firstAttribute="leading" secondItem="D0l-rm-wxu" secondAttribute="leading" constant="254" id="Mk3-oj-LDT"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" name="WeatherCellColor"/>
+                                <constraints>
+                                    <constraint firstItem="D0l-rm-wxu" firstAttribute="leading" secondItem="k4l-QL-LUV" secondAttribute="leading" constant="10" id="EtD-0G-pt5"/>
+                                    <constraint firstAttribute="bottom" secondItem="D0l-rm-wxu" secondAttribute="bottom" constant="10" id="Pai-6b-4IJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="D0l-rm-wxu" secondAttribute="trailing" constant="10" id="Woo-Mc-1am"/>
+                                    <constraint firstItem="D0l-rm-wxu" firstAttribute="top" secondItem="k4l-QL-LUV" secondAttribute="top" constant="10" id="ogz-CH-Pvy"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="KFB-zQ-XlT" secondAttribute="bottom" constant="10" id="040-Rc-sST"/>
+                    <constraint firstItem="KFB-zQ-XlT" firstAttribute="top" secondItem="xea-ac-uKH" secondAttribute="top" constant="10" id="0i9-3t-2sY"/>
+                    <constraint firstAttribute="trailing" secondItem="KFB-zQ-XlT" secondAttribute="trailing" constant="10" id="4Cy-UD-Us1"/>
+                    <constraint firstItem="KFB-zQ-XlT" firstAttribute="leading" secondItem="xea-ac-uKH" secondAttribute="leading" constant="10" id="mcH-Ca-7wZ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="label" destination="QoV-vg-Qyd" id="AVd-bu-Blb"/>
+                <outlet property="valueLabel" destination="TQk-Rx-cpN" id="qXD-41-3JH"/>
+                <outlet property="viewArea" destination="k4l-QL-LUV" id="VCv-6M-t94"/>
+            </connections>
+            <point key="canvasLocation" x="8.3969465648854964" y="-130.28169014084509"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="WeatherCellColor">
+            <color red="0.68627450980392157" green="0.82745098039215681" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
