@@ -17,6 +17,7 @@ class WeatherViewController: UIViewController {
         // Do any additional setup after loading the view.
         tableView.register(UINib(nibName: "WeatherViewCell", bundle: nil), forCellReuseIdentifier: "WeatherViewCell")
         tableView.register(UINib(nibName: "BigWeatherViewCell", bundle: nil), forCellReuseIdentifier: "BigWeatherViewCell")
+        
     }
     
 

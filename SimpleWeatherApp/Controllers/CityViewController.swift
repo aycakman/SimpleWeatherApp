@@ -10,11 +10,16 @@ import UIKit
 class CityViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    var cityManager = CityManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.register(UINib(nibName: "CityNameViewCell", bundle: nil), forCellReuseIdentifier: "CityNameViewCell")
         // Do any additional setup after loading the view.
+        if let localData = cityManager.readLocalFile(forName: "city.list") {
+            cityManager.parse(jsonData: localData)
+        }
     }
     
 
