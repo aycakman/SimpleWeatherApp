@@ -8,22 +8,24 @@
 import Foundation
 struct CityManager {
     
-    func parseJson() -> ([Int], [String]){
-        var cityID = [Int]()
-        var cityName = [String]()
+    let coreDataManager = CoreDataManager.shared
+
+    func parseAndStoreJson() {
         if let path = Bundle.main.path(forResource: "city.list", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
                 let decoder = JSONDecoder()
-                let cities = try decoder.decode(Cities.self, from: data)
-                cityID = cities.map { $0.id }
-                cityName = cities.map { $0.name }
-
+                let citiesData = try decoder.decode(Cities.self, from: data)
+                coreDataManager.saveToCoreData(cities: citiesData)
             } catch {
-                print("fetch the name in json file: \(error)")
+                print("Error parsing and storing the json file: \(error)")
             }
         }
-        return (cityID, cityName)
+    }
+
+    func fetchCities() -> [City] {
+        return coreDataManager.fetchFromCoreData()
     }
 }
+
 

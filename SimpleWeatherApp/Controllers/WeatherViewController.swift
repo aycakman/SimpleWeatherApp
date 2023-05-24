@@ -17,7 +17,14 @@ class WeatherViewController: UIViewController {
         // Do any additional setup after loading the view.
         tableView.register(UINib(nibName: "WeatherViewCell", bundle: nil), forCellReuseIdentifier: "WeatherViewCell")
         tableView.register(UINib(nibName: "BigWeatherViewCell", bundle: nil), forCellReuseIdentifier: "BigWeatherViewCell")
-       
+        
+        let cities = CoreDataManager.shared.fetchFromCoreData()
+        //for control to understand store the data in core data
+        //Fetched 68154 cities from CoreData
+        print("Fetched \(cities.count) cities from CoreData")
+        for city in cities {
+            print("City Name: \(city.name ?? ""), City ID: \(city.id)")
+        }
     }
 
 }
