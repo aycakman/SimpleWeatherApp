@@ -9,11 +9,19 @@ import UIKit
 
 class WeatherViewController: UIViewController {
 
+    @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var currentWeatherLabel: UILabel!
+    @IBOutlet weak var feelsLikeLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var cities : [City] = []
-    var weatherData: [WeatherData] = []
+    var weatherData: WeatherData!
     var cityID : Int64!
-    
+    var cityName : String!
+    var humidityValue: String!
+    var windSpeed: Double!
+    var windGust: Double!
+    var coordLat: String!
+    var coordLong: String!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -34,6 +42,7 @@ class WeatherViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         DispatchQueue.main.async {
             self.fetchData(Int(self.cityID ?? 745044))
+            self.cityNameLabel.text = self.cityName
         }
     }
 
@@ -44,7 +53,14 @@ class WeatherViewController: UIViewController {
         }
         NetworkService().downloadData(url: url) { [weak self] (weather: WeatherData?) in
              if let weather = weather {
-                 self?.weatherData.append(weather)
+                 self?.cityNameLabel.text = weather.name
+                 self?.currentWeatherLabel.text = "Current: \(String(format: "%.0f", weather.main.temp))"
+                 self?.feelsLikeLabel.text = "Feels like: \(String(format: "%.0f", weather.main.feelsLike))"
+                 self?.humidityValue = String(format: "%.0f", weather.main.humidity)
+                 self?.windSpeed = weather.wind.speed
+                 self?.windGust = weather.wind.gust
+                 self?.coordLat = String(format: "%.0f", weather.coord.lat)
+                 self?.coordLong = String(format: "%.0f", weather.coord.lon)
                  print(weather) //check the data
                  DispatchQueue.main.async {
                      self?.tableView.reloadData()
@@ -64,15 +80,32 @@ extension WeatherViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if (indexPath.item % 2 == 0) {
+        if (indexPath.item == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherViewCell", for: indexPath) as! WeatherViewCell
+            cell.label.text = "Humidity"
+            cell.valueLabel.text = "%" + (humidityValue ?? "0")
+            return cell
+        }else if (indexPath.item == 1){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BigWeatherViewCell", for: indexPath) as! BigWeatherViewCell
+            cell.label.text = "Wind"
+            cell.valueOneLabel.text = "Speed: \(windSpeed ?? 0.0)km/h"
+            cell.valueTwoLabel.text = "Gust: \(windGust ?? 0.0)km/h"
+            return cell
+        }else if (indexPath.item == 2) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherViewCell", for: indexPath) as! WeatherViewCell
+            cell.label.text = "Sea Level"
+            cell.valueLabel.text = "data"
             return cell
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "BigWeatherViewCell", for: indexPath) as! BigWeatherViewCell
+            cell.label.text = "Coordinates"
+            cell.valueOneLabel.text = "Latitude: " + (coordLat ?? "0")
+            cell.valueTwoLabel.text = "Longitude: " + (coordLong ?? "0")
             return cell
         }
-   
+        
     }
+
     
     
 }

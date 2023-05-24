@@ -21,7 +21,7 @@ struct Coord: Codable {
 
 struct Main: Codable {
     let temp, feelsLike, tempMin, tempMax: Double
-    let pressure, humidity: Int
+    let pressure, humidity: Double
 
     enum CodingKeys: String, CodingKey {
         case temp
@@ -40,4 +40,5 @@ struct Weather: Codable {
 struct Wind: Codable {
     let speed: Double
     let deg: Int
+    let gust: Double
 }
