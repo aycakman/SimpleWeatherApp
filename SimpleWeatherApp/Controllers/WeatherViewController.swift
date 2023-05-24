@@ -13,15 +13,19 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var currentWeatherLabel: UILabel!
     @IBOutlet weak var feelsLikeLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
     var cities : [City] = []
     var weatherData: WeatherData!
     var cityID : Int64!
-    var cityName : String!
+    var cityName: String!
     var humidityValue: String!
     var windSpeed: Double!
     var windGust: Double!
     var coordLat: String!
     var coordLong: String!
+    var seaLevel: Int?
+    var descp: String!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -43,6 +47,7 @@ class WeatherViewController: UIViewController {
         DispatchQueue.main.async {
             self.fetchData(Int(self.cityID ?? 745044))
             self.cityNameLabel.text = self.cityName
+
         }
     }
 
@@ -53,7 +58,6 @@ class WeatherViewController: UIViewController {
         }
         NetworkService().downloadData(url: url) { [weak self] (weather: WeatherData?) in
              if let weather = weather {
-                 self?.cityNameLabel.text = weather.name
                  self?.currentWeatherLabel.text = "Current: \(String(format: "%.0f", weather.main.temp))"
                  self?.feelsLikeLabel.text = "Feels like: \(String(format: "%.0f", weather.main.feelsLike))"
                  self?.humidityValue = String(format: "%.0f", weather.main.humidity)
@@ -61,6 +65,11 @@ class WeatherViewController: UIViewController {
                  self?.windGust = weather.wind.gust
                  self?.coordLat = String(format: "%.0f", weather.coord.lat)
                  self?.coordLong = String(format: "%.0f", weather.coord.lon)
+                 self?.seaLevel = Int(weather.main.seaLevel ?? 0)
+                 for w in weather.weather{
+                     self?.descp = w.description
+                     self?.descriptionLabel.text = self?.descp
+                 }
                  print(weather) //check the data
                  DispatchQueue.main.async {
                      self?.tableView.reloadData()
@@ -94,7 +103,7 @@ extension WeatherViewController: UITableViewDataSource {
         }else if (indexPath.item == 2) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherViewCell", for: indexPath) as! WeatherViewCell
             cell.label.text = "Sea Level"
-            cell.valueLabel.text = "data"
+            cell.valueLabel.text = "\(seaLevel ?? 0)"
             return cell
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "BigWeatherViewCell", for: indexPath) as! BigWeatherViewCell

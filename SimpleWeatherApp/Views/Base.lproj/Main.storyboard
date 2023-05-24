@@ -136,6 +136,7 @@
                     <connections>
                         <outlet property="cityNameLabel" destination="M7Z-y8-DbQ" id="pAs-ve-AIG"/>
                         <outlet property="currentWeatherLabel" destination="TcZ-H3-Yl3" id="YCe-of-qLH"/>
+                        <outlet property="descriptionLabel" destination="Yvx-mc-gbe" id="0Yo-GY-XIs"/>
                         <outlet property="feelsLikeLabel" destination="uk9-4s-c4g" id="mLp-nW-78y"/>
                         <outlet property="tableView" destination="lL3-2t-D5M" id="RVs-UN-tO9"/>
                     </connections>

@@ -15,6 +15,7 @@ class CityViewController: UIViewController {
     var cities: [City] = []
     var selectedRowIndex: Int!
     var cityId: Int64!
+    var cityName: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class CityViewController: UIViewController {
     func passDataFromTabBar() {
         if let tabBarController = self.tabBarController, let viewControllers =  tabBarController.viewControllers, let firstTabBarController = viewControllers[0] as? WeatherViewController {
             firstTabBarController.cityID = self.cityId
+            firstTabBarController.cityName = self.cityName
         }
     }
 }
@@ -60,6 +62,7 @@ extension CityViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRowIndex = indexPath.row
         cityId = cities[selectedRowIndex].id
+        cityName = cities[selectedRowIndex].name
         print(cityId!)//checked id
         passDataFromTabBar()
         self.tabBarController?.selectedIndex = 0
