@@ -7,29 +7,23 @@
 
 import Foundation
 struct CityManager {
+    
+    func parseJson() -> ([Int], [String]){
+        var cityID = [Int]()
+        var cityName = [String]()
+        if let path = Bundle.main.path(forResource: "city.list", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let decoder = JSONDecoder()
+                let cities = try decoder.decode(Cities.self, from: data)
+                cityID = cities.map { $0.id }
+                cityName = cities.map { $0.name }
 
-    func readLocalFile(forName fileName: String) -> Data? {
-        do {
-            if let bundlePath = Bundle.main.path(forResource: fileName, ofType: "json"),
-               let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
-                return jsonData
+            } catch {
+                print("fetch the name in json file: \(error)")
             }
-        } catch {
-            print("read local file function: \(error)")
         }
-        
-        return nil
+        return (cityID, cityName)
     }
-    
-    
-    func parse(jsonData: Data) {
-        do {
-            let decodedData = try JSONDecoder().decode(Cities.self, from: jsonData)
-            print("id: ", decodedData[0].id)
-        } catch {
-            print("parse function: \(error)")
-        }
-    }
- 
 }
 

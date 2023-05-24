@@ -10,36 +10,20 @@ import UIKit
 class CityViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    
     var cityManager = CityManager()
     var cityNames: [String] = []
+    var cityIDs: [Int] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.register(UINib(nibName: "CityNameViewCell", bundle: nil), forCellReuseIdentifier: "CityNameViewCell")
-        // Do any additional setup after loading the view.
-//        if let localData = cityManager.readLocalFile(forName: "city.list") {
-//            cityManager.parse(jsonData: localData)
-//        }
         
-        cityNames = parseJson()
-        print(cityNames)
+        cityNames = cityManager.parseJson().1
+        cityIDs = cityManager.parseJson().0
     }
     
-    func parseJson() -> [String] {
-        var cityNames = [String]()
-        if let path = Bundle.main.path(forResource: "city.list", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let decoder = JSONDecoder()
-                let cities = try decoder.decode([City].self, from: data)
-                cityNames = cities.map { $0.name }
-                
-            } catch {
-                print("fetch the name in json file: \(error)")
-            }
-        }
-        return cityNames
-    }
 }
 
 extension CityViewController: UITableViewDataSource {
