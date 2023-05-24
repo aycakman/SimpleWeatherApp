@@ -13,9 +13,14 @@ class CityViewController: UIViewController {
 
     let cityManager = CityManager()
     var cities: [City] = []
+    var selectedRowIndex: Int!
+    var cityId: Int64!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        tableView.delegate = self
+        
         tableView.register(UINib(nibName: "CityNameViewCell", bundle: nil), forCellReuseIdentifier: "CityNameViewCell")
 
         DispatchQueue.main.async {
@@ -29,7 +34,13 @@ class CityViewController: UIViewController {
      
     }
     
+    func passDataFromTabBar() {
+        if let tabBarController = self.tabBarController, let viewControllers =  tabBarController.viewControllers, let firstTabBarController = viewControllers[0] as? WeatherViewController {
+            firstTabBarController.cityID = self.cityId
+        }
+    }
 }
+
 
 extension CityViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -44,5 +55,13 @@ extension CityViewController: UITableViewDataSource {
     }
     
     
-    
+}
+extension CityViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedRowIndex = indexPath.row
+        cityId = cities[selectedRowIndex].id
+        print(cityId!)//checked id
+        passDataFromTabBar()
+        self.tabBarController?.selectedIndex = 0
+    }
 }

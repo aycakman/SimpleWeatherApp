@@ -7,10 +7,18 @@
 
 import Foundation
 
-struct Weather: Codable {
+struct WeatherData: Codable {
+    let coord: Coord
     let main: Main
     let name: String
+    let weather: [Weather]
+    let wind: Wind
 }
+
+struct Coord: Codable {
+    let lon, lat: Double
+}
+
 struct Main: Codable {
     let temp, feelsLike, tempMin, tempMax: Double
     let pressure, humidity: Int
@@ -24,3 +32,12 @@ struct Main: Codable {
     }
 }
 
+struct Weather: Codable {
+    let id: Int
+    let main, description, icon: String
+}
+
+struct Wind: Codable {
+    let speed: Double
+    let deg: Int
+}
