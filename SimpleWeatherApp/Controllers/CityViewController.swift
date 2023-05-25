@@ -23,7 +23,7 @@ class CityViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
-        tableView.register(UINib(nibName: "CityNameViewCell", bundle: nil), forCellReuseIdentifier: "CityNameViewCell")
+        tableView.register(UINib(nibName: K.cityCellNibName, bundle: nil), forCellReuseIdentifier: K.cityCellIdentifier)
         getData()
      
     }
@@ -60,7 +60,7 @@ extension CityViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CityNameViewCell", for: indexPath) as! CityNameViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.cityCellIdentifier, for: indexPath) as! CityNameViewCell
         let city = filteredCity[indexPath.row]
         cell.cityNameLabel.text = city.name
         return cell
