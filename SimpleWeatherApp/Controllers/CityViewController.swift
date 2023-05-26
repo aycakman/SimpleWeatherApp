@@ -12,7 +12,7 @@ class CityViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    let cityManager = CityManager()
+    let cityManager = CityManager.shared
     var cities: [City] = []
     var filteredCity: [City] = []
     var selectedRowIndex: Int!
@@ -85,6 +85,9 @@ extension CityViewController: UISearchBarDelegate {
         filteredCity = []
         if searchText == "" {
             filteredCity = cities
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder() //the keyboard is dismissed
+            }
         }else {
             for city in cities {
                 if ((city.name?.lowercased().contains(searchText.lowercased())) == true) {

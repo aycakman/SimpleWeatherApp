@@ -14,7 +14,7 @@ class CoreDataManager {
     private init() {}
     
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "SimpleWeatherApp")
+        let container = NSPersistentContainer(name: K.CoreData.containerName)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -35,12 +35,12 @@ class CoreDataManager {
     }
     
     func fetchFromCoreData() -> [City] {
-        let fetchRequest = NSFetchRequest<City>(entityName: "City")
+        let fetchRequest = NSFetchRequest<City>(entityName: K.CoreData.entityName)
         do {
             let cities = try context.fetch(fetchRequest)
             return cities
         } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+            print("Error fetching data from context\(error)")
             return []
         }
     }
@@ -55,4 +55,7 @@ class CoreDataManager {
             }
         }
     }
+    
+  
+    
 }

@@ -16,4 +16,11 @@ struct K {
     static let cellIdentifier = "WeatherViewCell"
     static let bigCellIdentifier = "BigWeatherViewCell"
     static let cityCellIdentifier = "CityNameViewCell"
+    static let jsonFileName = "city.list"
+    static let fileType = "json"
+    
+    struct CoreData {
+        static let entityName = "City"
+        static let containerName = "SimpleWeatherApp"
+    }
 }
