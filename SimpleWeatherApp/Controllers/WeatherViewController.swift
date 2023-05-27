@@ -18,6 +18,7 @@ class WeatherViewController: UIViewController {
     
     var cities = [City]()
     var weatherData: WeatherData!
+    var realmManager = RealmManager.shared
     var cityID : Int64!
     var cityName: String = K.defaultCityName
     var humidityValue: String!
@@ -35,10 +36,11 @@ class WeatherViewController: UIViewController {
         
         tableView.register(UINib(nibName: K.Cells.cellNibName, bundle: nil), forCellReuseIdentifier: K.Cells.cellIdentifier)
         tableView.register(UINib(nibName: K.Cells.bigCellNibName, bundle: nil), forCellReuseIdentifier: K.Cells.bigCellIdentifier)
+        //realmManager.deleteAllFromRealm()
 
-        cities = CoreDataManager.shared.fetchFromCoreData()
+        cities = RealmManager.shared.fetchFromRealm()
         //for control to understand store the data in core data
-        print("Fetched \(cities.count) cities from CoreData")
+        print("Fetched \(cities.count) cities from Realm")
       
     }
   

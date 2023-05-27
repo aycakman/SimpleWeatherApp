@@ -25,6 +25,7 @@ class CityViewController: UIViewController {
         searchBar.delegate = self
         
         tableView.register(UINib(nibName: K.Cells.cityCellNibName, bundle: nil), forCellReuseIdentifier: K.Cells.cityCellIdentifier)
+        
         getData()
      
     }
@@ -38,14 +39,13 @@ class CityViewController: UIViewController {
     
 //MARK: - Get Data from Core Data
     func getData() {
-        cityManager.downloadJsonFile()
-        self.cities = self.cityManager.fetchCities()
-        if self.cities.isEmpty {
-            self.cityManager.parseAndStoreJson()
+        DispatchQueue.main.async {
+            self.cityManager.checkJsonFile()
             self.cities = self.cityManager.fetchCities()
+            self.filteredCity = self.cities
+            self.tableView.reloadData()
+            //print(cities)
         }
-        self.filteredCity = self.cities
-        self.tableView.reloadData()
     }
     
 //MARK: - Pass Data to First TabBar
@@ -74,7 +74,7 @@ extension CityViewController: UITableViewDataSource {
 extension CityViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRowIndex = indexPath.row
-        cityId = filteredCity[selectedRowIndex].id
+        cityId = Int64(filteredCity[selectedRowIndex].id)
         cityName = filteredCity[selectedRowIndex].name
         print(cityId!)//checked id
         passDataFromTabBar()
@@ -94,7 +94,7 @@ extension CityViewController: UISearchBarDelegate {
             }
         }else {
             for city in cities {
-                if ((city.name?.lowercased().contains(searchText.lowercased())) == true) {
+                if ((city.name.lowercased().contains(searchText.lowercased())) == true) {
                     filteredCity.append(city)
                 }
             }

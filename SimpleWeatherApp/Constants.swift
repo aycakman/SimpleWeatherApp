@@ -10,8 +10,7 @@ import Foundation
 struct K {
     static let defaultCityName = "İstanbul"
     static let defaultCityID = 745044
-    static let jsonFileName = "city.list"
-    static let fileType = "json"
+    static let jsonFileName = "city.list.json"
     static let jsonFileUrl = "https://bulk.openweathermap.org/sample/city.list.json.gz"
     
     struct Cells {

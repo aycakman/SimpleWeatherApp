@@ -10,13 +10,15 @@
 		1123E6A52A1DDC3700310580 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1123E6A42A1DDC3700310580 /* NetworkService.swift */; };
 		1123E6A82A1DDC5A00310580 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1123E6A72A1DDC5A00310580 /* Alamofire */; };
 		1123E6AA2A1DE03D00310580 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1123E6A92A1DE03D00310580 /* WeatherData.swift */; };
-		1123E6AE2A1DF06F00310580 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1123E6AD2A1DF06F00310580 /* CoreDataManager.swift */; };
 		11EB0F042A1F70B800114C5E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EB0F032A1F70B800114C5E /* Constants.swift */; };
 		11EB0F072A22370800114C5E /* Gzip in Frameworks */ = {isa = PBXBuildFile; productRef = 11EB0F062A22370800114C5E /* Gzip */; };
+		11EB0F0E2A22560A00114C5E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 11EB0F0D2A22560A00114C5E /* Realm */; };
+		11EB0F102A22560A00114C5E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 11EB0F0F2A22560A00114C5E /* RealmSwift */; };
+		11EB0F122A22597400114C5E /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EB0F112A22597400114C5E /* City.swift */; };
+		11EB0F142A22675A00114C5E /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EB0F132A22675A00114C5E /* RealmManager.swift */; };
 		11F321A32A1CCDA500EF5652 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F321A22A1CCDA500EF5652 /* AppDelegate.swift */; };
 		11F321A52A1CCDA500EF5652 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F321A42A1CCDA500EF5652 /* SceneDelegate.swift */; };
 		11F321AA2A1CCDA500EF5652 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11F321A82A1CCDA500EF5652 /* Main.storyboard */; };
-		11F321AD2A1CCDA500EF5652 /* SimpleWeatherApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 11F321AB2A1CCDA500EF5652 /* SimpleWeatherApp.xcdatamodeld */; };
 		11F321AF2A1CCDA600EF5652 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11F321AE2A1CCDA600EF5652 /* Assets.xcassets */; };
 		11F321B22A1CCDA600EF5652 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11F321B02A1CCDA600EF5652 /* LaunchScreen.storyboard */; };
 		11F321BD2A1CCDA600EF5652 /* SimpleWeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F321BC2A1CCDA600EF5652 /* SimpleWeatherAppTests.swift */; };
@@ -55,13 +57,13 @@
 /* Begin PBXFileReference section */
 		1123E6A42A1DDC3700310580 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		1123E6A92A1DE03D00310580 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
-		1123E6AD2A1DF06F00310580 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		11EB0F032A1F70B800114C5E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		11EB0F112A22597400114C5E /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		11EB0F132A22675A00114C5E /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		11F3219F2A1CCDA500EF5652 /* SimpleWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11F321A22A1CCDA500EF5652 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11F321A42A1CCDA500EF5652 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		11F321A92A1CCDA500EF5652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		11F321AC2A1CCDA500EF5652 /* SimpleWeatherApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SimpleWeatherApp.xcdatamodel; sourceTree = "<group>"; };
 		11F321AE2A1CCDA600EF5652 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11F321B12A1CCDA600EF5652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11F321B32A1CCDA600EF5652 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -89,6 +91,8 @@
 			files = (
 				11F321F52A1D292600EF5652 /* SwiftyJSON in Frameworks */,
 				1123E6A82A1DDC5A00310580 /* Alamofire in Frameworks */,
+				11EB0F0E2A22560A00114C5E /* Realm in Frameworks */,
+				11EB0F102A22560A00114C5E /* RealmSwift in Frameworks */,
 				11EB0F072A22370800114C5E /* Gzip in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,7 +117,9 @@
 		1123E6A32A1DDC2200310580 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				11F321EF2A1CFFCB00EF5652 /* CityManager.swift */,
 				1123E6A42A1DDC3700310580 /* NetworkService.swift */,
+				11EB0F132A22675A00114C5E /* RealmManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -151,7 +157,6 @@
 				11F321AE2A1CCDA600EF5652 /* Assets.xcassets */,
 				11F321B02A1CCDA600EF5652 /* LaunchScreen.storyboard */,
 				11F321B32A1CCDA600EF5652 /* Info.plist */,
-				11F321AB2A1CCDA500EF5652 /* SimpleWeatherApp.xcdatamodeld */,
 			);
 			path = SimpleWeatherApp;
 			sourceTree = "<group>";
@@ -200,9 +205,8 @@
 			isa = PBXGroup;
 			children = (
 				11F321ED2A1CFEC900EF5652 /* CityData.swift */,
+				11EB0F112A22597400114C5E /* City.swift */,
 				1123E6A92A1DE03D00310580 /* WeatherData.swift */,
-				11F321EF2A1CFFCB00EF5652 /* CityManager.swift */,
-				1123E6AD2A1DF06F00310580 /* CoreDataManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -227,6 +231,8 @@
 				11F321F42A1D292600EF5652 /* SwiftyJSON */,
 				1123E6A72A1DDC5A00310580 /* Alamofire */,
 				11EB0F062A22370800114C5E /* Gzip */,
+				11EB0F0D2A22560A00114C5E /* Realm */,
+				11EB0F0F2A22560A00114C5E /* RealmSwift */,
 			);
 			productName = SimpleWeatherApp;
 			productReference = 11F3219F2A1CCDA500EF5652 /* SimpleWeatherApp.app */;
@@ -304,6 +310,7 @@
 				11F321F32A1D292600EF5652 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				1123E6A62A1DDC5A00310580 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				11EB0F052A22370800114C5E /* XCRemoteSwiftPackageReference "GzipSwift" */,
+				11EB0F0C2A22560A00114C5E /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 11F321A02A1CCDA500EF5652 /* Products */;
 			projectDirPath = "";
@@ -352,16 +359,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				1123E6A52A1DDC3700310580 /* NetworkService.swift in Sources */,
-				11F321AD2A1CCDA500EF5652 /* SimpleWeatherApp.xcdatamodeld in Sources */,
 				11F321E22A1CD5DA00EF5652 /* WeatherViewController.swift in Sources */,
 				11F321F02A1CFFCB00EF5652 /* CityManager.swift in Sources */,
 				1123E6AA2A1DE03D00310580 /* WeatherData.swift in Sources */,
 				11F321EE2A1CFEC900EF5652 /* CityData.swift in Sources */,
 				11F321A32A1CCDA500EF5652 /* AppDelegate.swift in Sources */,
-				1123E6AE2A1DF06F00310580 /* CoreDataManager.swift in Sources */,
 				11F321E72A1CE21500EF5652 /* BigWeatherViewCell.swift in Sources */,
+				11EB0F142A22675A00114C5E /* RealmManager.swift in Sources */,
 				11F321A52A1CCDA500EF5652 /* SceneDelegate.swift in Sources */,
 				11F321DB2A1CD2E200EF5652 /* WeatherViewCell.swift in Sources */,
+				11EB0F122A22597400114C5E /* City.swift in Sources */,
 				11EB0F042A1F70B800114C5E /* Constants.swift in Sources */,
 				11F321EB2A1CEE5E00EF5652 /* CityNameViewCell.swift in Sources */,
 				11F321E42A1CD5E500EF5652 /* CityViewController.swift in Sources */,
@@ -724,6 +731,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		11EB0F0C2A22560A00114C5E /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		11F321F32A1D292600EF5652 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
@@ -745,25 +760,22 @@
 			package = 11EB0F052A22370800114C5E /* XCRemoteSwiftPackageReference "GzipSwift" */;
 			productName = Gzip;
 		};
+		11EB0F0D2A22560A00114C5E /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 11EB0F0C2A22560A00114C5E /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		11EB0F0F2A22560A00114C5E /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 11EB0F0C2A22560A00114C5E /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		11F321F42A1D292600EF5652 /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 11F321F32A1D292600EF5652 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		11F321AB2A1CCDA500EF5652 /* SimpleWeatherApp.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				11F321AC2A1CCDA500EF5652 /* SimpleWeatherApp.xcdatamodel */,
-			);
-			currentVersion = 11F321AC2A1CCDA500EF5652 /* SimpleWeatherApp.xcdatamodel */;
-			path = SimpleWeatherApp.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 11F321972A1CCDA500EF5652 /* Project object */;
 }
