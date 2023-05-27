@@ -13,6 +13,8 @@ class CoreDataManager {
     static let shared = CoreDataManager()
     private init() {}
     
+    var context: NSManagedObjectContext { return persistentContainer.viewContext }
+
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: K.CoreData.containerName)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -22,8 +24,6 @@ class CoreDataManager {
         })
         return container
     }()
-    
-    var context: NSManagedObjectContext { persistentContainer.viewContext }
     
     func saveToCoreData(cities: [CityData]) {
         cities.forEach { cityData in
@@ -46,6 +46,7 @@ class CoreDataManager {
     }
     
     func saveContext() {
+        let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
                 try context.save()
@@ -54,8 +55,5 @@ class CoreDataManager {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
-    }
-    
-  
-    
+    }  
 }

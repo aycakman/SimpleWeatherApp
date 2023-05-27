@@ -33,26 +33,23 @@ class WeatherViewController: UIViewController {
         tableView.dataSource = self
         tabBarController?.delegate = self
         
-        tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
-        tableView.register(UINib(nibName: K.bigCellNibName, bundle: nil), forCellReuseIdentifier: K.bigCellIdentifier)
-        
+        tableView.register(UINib(nibName: K.Cells.cellNibName, bundle: nil), forCellReuseIdentifier: K.Cells.cellIdentifier)
+        tableView.register(UINib(nibName: K.Cells.bigCellNibName, bundle: nil), forCellReuseIdentifier: K.Cells.bigCellIdentifier)
+
         cities = CoreDataManager.shared.fetchFromCoreData()
         //for control to understand store the data in core data
-        //Fetched 68154 cities from CoreData
         print("Fetched \(cities.count) cities from CoreData")
-//        for city in cities {
-//            print("City Name: \(city.name ?? ""), City ID: \(city.id)")
-//        }
       
     }
   
     override func viewWillAppear(_ animated: Bool) {
         DispatchQueue.main.async {
-            self.fetchData(Int(self.cityID ?? 745044))
+            self.fetchData(Int(self.cityID ?? Int64(K.defaultCityID)))
             self.cityNameLabel.text = self.cityName
         }
     }
-
+    
+//MARK: - Fetch Data
     func valueForAPIKey(named keyname:String) -> String {
       let filePath = Bundle.main.path(forResource: "Info", ofType: "plist")
       let plist = NSDictionary(contentsOfFile:filePath!)
@@ -61,7 +58,7 @@ class WeatherViewController: UIViewController {
     }
     
     func fetchData(_ cityID: Int) {
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?APPID=\(valueForAPIKey(named: "APIkey"))&units=metric&id=\(cityID)") else {
+        guard let url = URL(string: "\(K.API.baseURL)&APPID=\(valueForAPIKey(named: "APIkey"))&id=\(cityID)") else {
             print("invalid URL")
             return
         }
@@ -89,27 +86,27 @@ class WeatherViewController: UIViewController {
          }
     }
 }
-
+//MARK: - TableView
 extension WeatherViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return K.numberOfRows
+        return K.Cells.numberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if (indexPath.item == 0) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! WeatherViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: K.Cells.cellIdentifier, for: indexPath) as! WeatherViewCell
             cell.label.text = "Humidity"
             cell.valueLabel.text = "%" + (humidityValue ?? "0")
             return cell
         }else if (indexPath.item == 1){
-            let cell = tableView.dequeueReusableCell(withIdentifier: K.bigCellIdentifier, for: indexPath) as! BigWeatherViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: K.Cells.bigCellIdentifier, for: indexPath) as! BigWeatherViewCell
             cell.label.text = "Wind"
             cell.valueOneLabel.text = "Speed: \(windSpeed ?? 0.0)km/h"
             cell.valueTwoLabel.text = "Gust: \(windGust ?? 0.0)km/h"
             return cell
         }else if (indexPath.item == 2) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! WeatherViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: K.Cells.cellIdentifier, for: indexPath) as! WeatherViewCell
             cell.label.text = "Sea Level"
             if seaLevel == 0 {
                 cell.valueLabel.text = "unknown"
@@ -118,7 +115,7 @@ extension WeatherViewController: UITableViewDataSource {
             }
             return cell
         }else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: K.bigCellIdentifier, for: indexPath) as! BigWeatherViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: K.Cells.bigCellIdentifier, for: indexPath) as! BigWeatherViewCell
             cell.label.text = "Coordinates"
             cell.valueOneLabel.text = "Latitude: " + (coordLat ?? "0")
             cell.valueTwoLabel.text = "Longitude: " + (coordLong ?? "0")
@@ -129,11 +126,12 @@ extension WeatherViewController: UITableViewDataSource {
     
 }
 
+//MARK: - TabBarController
 extension WeatherViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBar = tabBarController.tabBar
         let tabSelectedIndex = [0,1]
-        let systemNames = ["cloud", "location"]
+        let systemNames = [K.TabBar.tabBarIconFirst, K.TabBar.tabBarIconSecond]
         for index in tabSelectedIndex {
             tabBar.items?[index].image = UIImage(systemName: tabBarController.selectedIndex == index ? "\(systemNames[index]).fill" : systemNames[index])
             

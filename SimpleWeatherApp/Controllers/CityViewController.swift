@@ -24,19 +24,21 @@ class CityViewController: UIViewController {
         tableView.delegate = self
         searchBar.delegate = self
         
-        tableView.register(UINib(nibName: K.cityCellNibName, bundle: nil), forCellReuseIdentifier: K.cityCellIdentifier)
+        tableView.register(UINib(nibName: K.Cells.cityCellNibName, bundle: nil), forCellReuseIdentifier: K.Cells.cityCellIdentifier)
         getData()
      
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tabBarController?.tabBar.items?[1].image = UIImage(systemName: "location.fill")
+        tabBarController?.tabBar.items?[1].image = UIImage(systemName: "\(K.TabBar.tabBarIconSecond).fill")
         filteredCity = cities
         searchBar.text = ""
         tableView.reloadData()
     }
     
+//MARK: - Get Data from Core Data
     func getData() {
+        cityManager.downloadJsonFile()
         self.cities = self.cityManager.fetchCities()
         if self.cities.isEmpty {
             self.cityManager.parseAndStoreJson()
@@ -44,9 +46,9 @@ class CityViewController: UIViewController {
         }
         self.filteredCity = self.cities
         self.tableView.reloadData()
-        
     }
     
+//MARK: - Pass Data to First TabBar
     func passDataFromTabBar() {
         if let tabBarController = self.tabBarController, let viewControllers =  tabBarController.viewControllers, let firstTabBarController = viewControllers[0] as? WeatherViewController {
             firstTabBarController.cityID = self.cityId
@@ -55,21 +57,20 @@ class CityViewController: UIViewController {
     }
 }
 
-
+//MARK: - TableView
 extension CityViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredCity.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.cityCellIdentifier, for: indexPath) as! CityNameViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.Cells.cityCellIdentifier, for: indexPath) as! CityNameViewCell
         let city = filteredCity[indexPath.row]
         cell.cityNameLabel.text = city.name
         return cell
     }
-    
-    
 }
+
 extension CityViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRowIndex = indexPath.row
@@ -77,11 +78,12 @@ extension CityViewController: UITableViewDelegate {
         cityName = filteredCity[selectedRowIndex].name
         print(cityId!)//checked id
         passDataFromTabBar()
+        tabBarController?.tabBar.items?[0].image = UIImage(systemName: "\(K.TabBar.tabBarIconFirst).fill")
         self.tabBarController?.selectedIndex = 0
-        
     }
 }
 
+//MARK: - SearchBar
 extension CityViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredCity = []
@@ -98,7 +100,6 @@ extension CityViewController: UISearchBarDelegate {
             }
         }
         tableView.reloadData()
-
     }
 }
 
