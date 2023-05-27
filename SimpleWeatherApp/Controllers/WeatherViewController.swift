@@ -16,7 +16,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var highestLowestTemp: UILabel!
     
-    var cities : [City] = []
+    var cities = [City]()
     var weatherData: WeatherData!
     var cityID : Int64!
     var cityName: String = K.defaultCityName
@@ -31,7 +31,8 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
-
+        tabBarController?.delegate = self
+        
         tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
         tableView.register(UINib(nibName: K.bigCellNibName, bundle: nil), forCellReuseIdentifier: K.bigCellIdentifier)
         
@@ -125,7 +126,19 @@ extension WeatherViewController: UITableViewDataSource {
         }
         
     }
-
-    
     
 }
+
+extension WeatherViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let tabBar = tabBarController.tabBar
+        let tabSelectedIndex = [0,1]
+        let systemNames = ["cloud", "location"]
+        for index in tabSelectedIndex {
+            tabBar.items?[index].image = UIImage(systemName: tabBarController.selectedIndex == index ? "\(systemNames[index]).fill" : systemNames[index])
+            
+        }
+    }
+    
+}
+

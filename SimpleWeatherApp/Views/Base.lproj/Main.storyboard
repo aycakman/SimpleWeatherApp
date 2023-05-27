@@ -3,6 +3,8 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -35,7 +37,7 @@
                                         </connections>
                                     </searchBar>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YZU-ZF-p0z">
-                                        <rect key="frame" x="0.0" y="70.333333333333371" width="393" height="623.99999999999989"/>
+                                        <rect key="frame" x="0.0" y="70.333333333333371" width="393" height="624"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                 </subviews>
@@ -50,7 +52,10 @@
                             <constraint firstItem="ALp-fd-uka" firstAttribute="leading" secondItem="7fF-SA-fXJ" secondAttribute="leading" id="zox-Nn-iSp"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="location" catalog="system" selectedImage="location" id="qwq-bW-Seo"/>
+                    <tabBarItem key="tabBarItem" title="" id="qwq-bW-Seo">
+                        <imageReference key="image" image="location" catalog="system" symbolScale="large"/>
+                        <color key="badgeColor" systemColor="linkColor"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="searchBar" destination="FbM-da-iYl" id="sGh-1C-Nsy"/>
                         <outlet property="tableView" destination="YZU-ZF-p0z" id="Q2I-Po-GLb"/>
@@ -140,7 +145,10 @@
                             <constraint firstItem="uk9-4s-c4g" firstAttribute="trailing" secondItem="xYg-KZ-WUV" secondAttribute="trailing" id="wG3-5r-9hg"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="cloud" catalog="system" selectedImage="cloud" id="nBU-K2-RtZ"/>
+                    <tabBarItem key="tabBarItem" title="" id="nBU-K2-RtZ">
+                        <imageReference key="image" image="cloud" catalog="system" symbolScale="large"/>
+                        <color key="badgeColor" systemColor="linkColor"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="cityNameLabel" destination="M7Z-y8-DbQ" id="pAs-ve-AIG"/>
                         <outlet property="currentWeatherLabel" destination="TcZ-H3-Yl3" id="YCe-of-qLH"/>
@@ -162,7 +170,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <tabBarAppearance key="standardAppearance"/>
+                        <tabBarAppearance key="standardAppearance">
+                            <color key="backgroundColor" name="WeatherCellColor"/>
+                        </tabBarAppearance>
                     </tabBar>
                     <connections>
                         <segue destination="LEw-Oh-DwM" kind="relationship" relationship="viewControllers" id="1ON-Mo-KTj"/>
@@ -177,6 +187,12 @@
     <resources>
         <image name="cloud" catalog="system" width="128" height="87"/>
         <image name="location" catalog="system" width="128" height="121"/>
+        <namedColor name="WeatherCellColor">
+            <color red="0.68599998950958252" green="0.82700002193450928" blue="0.88599997758865356" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -13,8 +13,8 @@ class CityViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     let cityManager = CityManager.shared
-    var cities: [City] = []
-    var filteredCity: [City] = []
+    var cities = [City]()
+    var filteredCity = [City]()
     var selectedRowIndex: Int!
     var cityId: Int64!
     var cityName: String!
@@ -23,12 +23,14 @@ class CityViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
+        
         tableView.register(UINib(nibName: K.cityCellNibName, bundle: nil), forCellReuseIdentifier: K.cityCellIdentifier)
         getData()
      
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.items?[1].image = UIImage(systemName: "location.fill")
         filteredCity = cities
         searchBar.text = ""
         tableView.reloadData()
@@ -99,3 +101,6 @@ extension CityViewController: UISearchBarDelegate {
 
     }
 }
+
+
+
