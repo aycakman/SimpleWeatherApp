@@ -31,5 +31,6 @@ To get started, you can get your free API key after logging into OpenWeatherMap 
 Check the detailed API documentation [here](https://openweathermap.org/api) for more information on how to use it. 
 
 
-https://github.com/aycakman/SimpleWeatherApp/assets/81530201/b6cdd992-a4aa-4452-9677-aa387099134e
+
+https://github.com/aycakman/SimpleWeatherApp/assets/81530201/9bc3bd36-bc09-4aa8-9e47-475958f0c758
 
