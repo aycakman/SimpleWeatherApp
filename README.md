@@ -31,4 +31,5 @@ To get started, you can get your free API key after logging into OpenWeatherMap 
 Check the detailed API documentation [here](https://openweathermap.org/api) for more information on how to use it. 
 
 
-https://github.com/aycakman/MusicApp/assets/81530201/742ec8ec-2091-4722-b767-996291f85708
+https://github.com/aycakman/SimpleWeatherApp/assets/81530201/b6cdd992-a4aa-4452-9677-aa387099134e
+
