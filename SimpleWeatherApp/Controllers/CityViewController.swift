@@ -12,12 +12,8 @@ class CityViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    let cityManager = CityManager.shared
-    var cities = [City]()
-    var filteredCity = [City]()
-    var selectedRowIndex: Int!
-    var cityId: Int64!
-    var cityName: String!
+    var cityDataViewModel = CityDataViewModel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -25,34 +21,28 @@ class CityViewController: UIViewController {
         searchBar.delegate = self
         
         tableView.register(UINib(nibName: K.Cells.cityCellNibName, bundle: nil), forCellReuseIdentifier: K.Cells.cityCellIdentifier)
-        
+                
         getData()
-     
     }
     
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.items?[1].image = UIImage(systemName: "\(K.TabBar.tabBarIconSecond).fill")
-        filteredCity = cities
         searchBar.text = ""
+        cityDataViewModel.resetFilterName()
         tableView.reloadData()
     }
     
-//MARK: - Get Data from Core Data
+//MARK: - Get Data
     func getData() {
-        DispatchQueue.main.async {
-            self.cityManager.checkJsonFile()
-            self.cities = self.cityManager.fetchCities()
-            self.filteredCity = self.cities
-            self.tableView.reloadData()
-            //print(cities)
-        }
+        self.cityDataViewModel.getData()
+        self.tableView.reloadData()
     }
     
 //MARK: - Pass Data to First TabBar
     func passDataFromTabBar() {
         if let tabBarController = self.tabBarController, let viewControllers =  tabBarController.viewControllers, let firstTabBarController = viewControllers[0] as? WeatherViewController {
-            firstTabBarController.cityID = self.cityId
-            firstTabBarController.cityName = self.cityName
+            firstTabBarController.weatherDataViewModel.cityID = self.cityDataViewModel.cityID
+            firstTabBarController.weatherDataViewModel.cityName = self.cityDataViewModel.cityName
         }
     }
 }
@@ -60,12 +50,12 @@ class CityViewController: UIViewController {
 //MARK: - TableView
 extension CityViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredCity.count
+        return cityDataViewModel.rowsCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.Cells.cityCellIdentifier, for: indexPath) as! CityNameViewCell
-        let city = filteredCity[indexPath.row]
+        let city = cityDataViewModel.getCityName(at: indexPath.row)
         cell.cityNameLabel.text = city.name
         return cell
     }
@@ -73,10 +63,7 @@ extension CityViewController: UITableViewDataSource {
 
 extension CityViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedRowIndex = indexPath.row
-        cityId = Int64(filteredCity[selectedRowIndex].id)
-        cityName = filteredCity[selectedRowIndex].name
-        print(cityId!)//checked id
+        cityDataViewModel.selectCityName(at: indexPath.row)
         passDataFromTabBar()
         tabBarController?.tabBar.items?[0].image = UIImage(systemName: "\(K.TabBar.tabBarIconFirst).fill")
         self.tabBarController?.selectedIndex = 0
@@ -86,20 +73,14 @@ extension CityViewController: UITableViewDelegate {
 //MARK: - SearchBar
 extension CityViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredCity = []
-        if searchText == "" {
-            filteredCity = cities
+        cityDataViewModel.filterCityName(with: searchText)
+        tableView.reloadData()
+        
+        if searchText.isEmpty {
             DispatchQueue.main.async {
-                searchBar.resignFirstResponder() //the keyboard is dismissed
-            }
-        }else {
-            for city in cities {
-                if ((city.name.lowercased().contains(searchText.lowercased())) == true) {
-                    filteredCity.append(city)
-                }
+                searchBar.resignFirstResponder()
             }
         }
-        tableView.reloadData()
     }
 }
 

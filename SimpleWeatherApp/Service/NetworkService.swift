@@ -9,6 +9,10 @@ import Foundation
 import Alamofire
 
 class NetworkService {
+    
+    static let shared = NetworkService()
+    private init() {}
+    
     func downloadData<T: Codable>(url: URL, completion: @escaping (T?) -> ()) {
         AF.request(url, method: .get).validate().responseDecodable(of: T.self) { response in
             switch response.result {

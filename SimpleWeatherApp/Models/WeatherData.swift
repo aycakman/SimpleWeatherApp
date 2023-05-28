@@ -23,7 +23,6 @@ struct Main: Codable {
     let temp, feelsLike, tempMin, tempMax: Double
     let seaLevel : Int?
     let pressure, humidity: Double
-    
 
     enum CodingKeys: String, CodingKey {
         case temp

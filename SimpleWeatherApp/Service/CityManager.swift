@@ -14,6 +14,7 @@ struct CityManager {
     private init() {}
 
     let realmManager = RealmManager.shared
+    
     func checkJsonFile() {
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let fileUrl = documentDirectory.appendingPathComponent(K.jsonFileName)
@@ -23,8 +24,10 @@ struct CityManager {
             parseAndStoreJson()
         } else {
             downloadJsonFile()
+            
         }
     }
+    
     func downloadJsonFile() {
         let url = URL(string: K.jsonFileUrl)!
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
@@ -82,6 +85,7 @@ struct CityManager {
     func fetchCities() -> [City] {
         return realmManager.fetchFromRealm()
     }
+    
 }
 
 

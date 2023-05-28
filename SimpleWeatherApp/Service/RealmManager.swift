@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 
 class RealmManager {
+    
     static let shared = RealmManager()
     private init() {}
     
@@ -26,17 +27,23 @@ class RealmManager {
     func saveToRealm(cities: Cities) {
         do {
             try realm.write {
+                let currentCityID = Set(realm.objects(City.self).map { $0.id })
                 cities.forEach { cityData in
-                    let city = City()
-                    city.id = cityData.id
-                    city.name = cityData.name
-                    realm.add(city)
+                    if !currentCityID.contains(cityData.id) {
+                        let city = City()
+                        city.id = cityData.id
+                        city.name = cityData.name
+                        realm.add(city)
+                    } else {
+                        //print("\(cityData.id) already exists")
+                    }
                 }
             }
         }catch {
             print("error saving to realm: \(error)")
         }
     }
+    
     func deleteAllFromRealm() {
            do {
                try realm.write {
