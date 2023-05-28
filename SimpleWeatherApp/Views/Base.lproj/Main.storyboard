@@ -147,7 +147,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="nBU-K2-RtZ">
                         <imageReference key="image" image="cloud" catalog="system" symbolScale="large"/>
-                        <color key="badgeColor" systemColor="linkColor"/>
+                        <color key="badgeColor" name="AccentColor"/>
                     </tabBarItem>
                     <connections>
                         <outlet property="cityNameLabel" destination="M7Z-y8-DbQ" id="pAs-ve-AIG"/>
@@ -187,6 +187,9 @@
     <resources>
         <image name="cloud" catalog="system" width="128" height="87"/>
         <image name="location" catalog="system" width="128" height="121"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="WeatherCellColor">
             <color red="0.68599998950958252" green="0.82700002193450928" blue="0.88599997758865356" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
