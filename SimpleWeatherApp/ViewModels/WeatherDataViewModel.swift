@@ -18,7 +18,7 @@ class WeatherDataViewModel {
     var coordLat: String!
     var coordLong: String!
     var seaLevel: Int?
-    var descp: String!
+    var descp: String?
     var cityID: Int!
     var cityName: String!
     var networkService = NetworkService.shared
@@ -49,7 +49,7 @@ class WeatherDataViewModel {
                  
                  for w in weather.weather{
                      self.descp = w.description
-                     self.descp = "Today's Weather Description: " + (self.descp ?? "unknown")
+                     self.descp = "Today's Weather Description: " + (self.descp?.capitalized ?? "unknown")
                  }
                  print("data: \(weather)") //to control the data
                  completion()

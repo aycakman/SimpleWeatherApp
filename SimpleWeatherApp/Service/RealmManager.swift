@@ -57,7 +57,6 @@ class RealmManager {
     func fetchFromRealm() -> Results<City> {
         let cities = realm.objects(City.self)
         return cities
-        
     }
     
 }

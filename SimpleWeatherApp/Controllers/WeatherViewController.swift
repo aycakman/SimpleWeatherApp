@@ -30,7 +30,7 @@ class WeatherViewController: UIViewController {
         tableView.register(UINib(nibName: K.Cells.cellNibName, bundle: nil), forCellReuseIdentifier: K.Cells.cellIdentifier)
         tableView.register(UINib(nibName: K.Cells.bigCellNibName, bundle: nil), forCellReuseIdentifier: K.Cells.bigCellIdentifier)
         
-        //RealmManager.shared.deleteAllFromRealm()
+        //RealmManager.shared.deleteAllFromRealm() if you want to delete all data from Realm
         controlData()
         getData()
     }
@@ -70,7 +70,6 @@ extension WeatherViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if (indexPath.item == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: K.Cells.cellIdentifier, for: indexPath) as! WeatherViewCell
             cell.label.text = "Humidity"
@@ -80,7 +79,6 @@ extension WeatherViewController: UITableViewDataSource {
                 cell.valueLabel.text = "unknown"
             }
             return cell
-            
         } else if (indexPath.item == 1) {
             let cell = tableView.dequeueReusableCell(withIdentifier: K.Cells.bigCellIdentifier, for: indexPath) as! BigWeatherViewCell
             cell.label.text = "Wind"
@@ -95,7 +93,6 @@ extension WeatherViewController: UITableViewDataSource {
                 cell.valueTwoLabel.text = "Gust: unknown"
             }
             return cell
-            
         } else if (indexPath.item == 2) {
             let cell = tableView.dequeueReusableCell(withIdentifier: K.Cells.cellIdentifier, for: indexPath) as! WeatherViewCell
             cell.label.text = "Sea Level"
@@ -105,7 +102,6 @@ extension WeatherViewController: UITableViewDataSource {
                 cell.valueLabel.text = "unknown"
             }
             return cell
-            
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: K.Cells.bigCellIdentifier, for: indexPath) as! BigWeatherViewCell
             cell.label.text = "Coordinates"

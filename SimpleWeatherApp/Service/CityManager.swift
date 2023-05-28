@@ -19,13 +19,11 @@ struct CityManager {
     func checkJsonFile() {
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let fileUrl = documentDirectory.appendingPathComponent(K.jsonFileName)
-        
         if FileManager.default.fileExists(atPath: fileUrl.path) {
             print("Prevent to download the json file again.")
             parseAndStoreJson()
         } else {
             downloadJsonFile()
-            
         }
     }
     
@@ -71,7 +69,6 @@ struct CityManager {
         if !realmManager.fetchFromRealm().isEmpty {
             print("Prevent to parse json file again")
         }
-        
         do {
             let data = try Data(contentsOf: fileUrl, options: .mappedIfSafe)
             let decoder = JSONDecoder()

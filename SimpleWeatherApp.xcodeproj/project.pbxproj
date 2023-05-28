@@ -148,13 +148,6 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		11EB0F152A22980800114C5E /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		11F321962A1CCDA500EF5652 = {
 			isa = PBXGroup;
 			children = (
@@ -162,7 +155,6 @@
 				11F321BB2A1CCDA600EF5652 /* SimpleWeatherAppTests */,
 				11F321C52A1CCDA600EF5652 /* SimpleWeatherAppUITests */,
 				11F321A02A1CCDA500EF5652 /* Products */,
-				11EB0F152A22980800114C5E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -186,7 +178,6 @@
 				11F321D52A1CD28000EF5652 /* Views */,
 				11F321A22A1CCDA500EF5652 /* AppDelegate.swift */,
 				11F321A42A1CCDA500EF5652 /* SceneDelegate.swift */,
-				11EB0F032A1F70B800114C5E /* Constants.swift */,
 				11F321AE2A1CCDA600EF5652 /* Assets.xcassets */,
 				11F321B02A1CCDA600EF5652 /* LaunchScreen.storyboard */,
 				11F321B32A1CCDA600EF5652 /* Info.plist */,
@@ -221,6 +212,7 @@
 				11F321E62A1CE21500EF5652 /* BigWeatherViewCell.xib */,
 				11F321E92A1CEE5E00EF5652 /* CityNameViewCell.swift */,
 				11F321EA2A1CEE5E00EF5652 /* CityNameViewCell.xib */,
+				11EB0F032A1F70B800114C5E /* Constants.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
