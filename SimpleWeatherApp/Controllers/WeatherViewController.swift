@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class WeatherViewController: UIViewController {
 
@@ -16,7 +17,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var highestLowestTemp: UILabel!
     
-    var cities = [City]()
+    var cities : Results<City>?
     var weatherDataViewModel = WeatherDataViewModel()
     
     override func viewDidLoad() {
@@ -29,7 +30,7 @@ class WeatherViewController: UIViewController {
         tableView.register(UINib(nibName: K.Cells.cellNibName, bundle: nil), forCellReuseIdentifier: K.Cells.cellIdentifier)
         tableView.register(UINib(nibName: K.Cells.bigCellNibName, bundle: nil), forCellReuseIdentifier: K.Cells.bigCellIdentifier)
         
-        //realmManager.deleteAllFromRealm()
+        //RealmManager.shared.deleteAllFromRealm()
         controlData()
         getData()
     }
@@ -43,7 +44,7 @@ class WeatherViewController: UIViewController {
         //for control to understand store the data in realm
         cities = RealmManager.shared.fetchFromRealm()
         //Fetched 209579 cities from Realm
-        print("Fetched \(cities.count) cities from Realm")
+        print("Fetched \(cities?.count) cities from Realm")
     }
     
 //MARK: - Get Data

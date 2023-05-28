@@ -7,6 +7,7 @@
 
 import Foundation
 import Gzip
+import RealmSwift
 
 struct CityManager {
     
@@ -82,8 +83,8 @@ struct CityManager {
         
     }
 
-    func fetchCities() -> [City] {
-        return realmManager.fetchFromRealm()
+    func fetchCities() -> Results<City> {
+        return realmManager.realm.objects(City.self)
     }
     
 }

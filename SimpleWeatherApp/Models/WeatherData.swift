@@ -6,7 +6,7 @@
 //
 
 import Foundation
-//FFE381
+
 struct WeatherData: Codable {
     let coord: Coord
     let main: Main

@@ -6,17 +6,19 @@
 //
 
 import Foundation
+import RealmSwift
+
 class CityDataViewModel {
     private let cityManager = CityManager.shared
-    private var cities = [City]()
-    private var filteredCity = [City]()
+    private var cities : Results<City>!
+    private var filteredCity : Results<City>!
     var cityID: Int!
     var cityName: String!
     
     func getData() {
         cityManager.checkJsonFile()
-        self.cities = cityManager.fetchCities()
-        self.filteredCity = self.cities
+        cities = cityManager.fetchCities()
+        filteredCity = cities
     }
         
     func getCityName(at index: Int) -> City {
@@ -30,11 +32,10 @@ class CityDataViewModel {
     }
     
     func filterCityName(with searchText: String) {
-        filteredCity = []
         if searchText.isEmpty {
-            filteredCity = cities
+            filteredCity = RealmManager.shared.realm.objects(City.self)
         }else {
-            filteredCity = searchText.isEmpty ? cities : cities.filter({ $0.name.lowercased().contains(searchText.lowercased()) })//.sorted(by: { $0.name < $1.name})
+            filteredCity = RealmManager.shared.realm.objects(City.self).filter("name CONTAINS[c] %@", searchText).sorted(byKeyPath: "name", ascending: true)
         }
     }
     

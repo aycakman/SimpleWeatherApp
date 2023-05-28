@@ -40,7 +40,7 @@ class RealmManager {
                 }
             }
         }catch {
-            print("error saving to realm: \(error)")
+            print("Error saving to realm: \(error)")
         }
     }
     
@@ -54,9 +54,9 @@ class RealmManager {
            }
        }
     
-    func fetchFromRealm() -> [City] {
+    func fetchFromRealm() -> Results<City> {
         let cities = realm.objects(City.self)
-        return Array(cities)
+        return cities
         
     }
     
